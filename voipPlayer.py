@@ -47,42 +47,52 @@ def mouse_left():
 def mouse_right():
     pg.moveRel(X_OFFSET, yOffset=0, duration=0.25)
 
+
 def move_right():
     for i in range(2):
         pg.moveRel(X_OFFSET, yOffset=0, duration=0.25)
     pg.keyDown(keymap["forward"])
 
+
 def move_left():
     for i in range(2):
-        pg.moveRel(-X_OFFSET,yOffset=0,duration=0.25)
+        pg.moveRel(-X_OFFSET, yOffset=0, duration=0.25)
     pg.keyDown(keymap["forward"])
+
+
 def creative():
-    pg.write('/gamemode creative',interval=0.1)
-    pg.press('enter')
+    pg.write("/gamemode creative", interval=0.1)
+    pg.press("enter")
+
 
 def survival():
-    pg.write('/gamemode survival',interval=0.1)
-    pg.press('enter')
+    pg.write("/gamemode survival", interval=0.1)
+    pg.press("enter")
+
 
 def look_back():
     for i in range(4):
         pg.moveRel(X_OFFSET, yOffset=0, duration=0.25)
 
+
 def day():
-    pg.write('/time set day', interval=0.1)
-    pg.press('enter')
+    pg.write("/time set day", interval=0.1)
+    pg.press("enter")
+
 
 def night():
-    pg.write('/time set night',interval=0.01)
-    pg.press('enter')
+    pg.write("/time set night", interval=0.01)
+    pg.press("enter")
+
 
 def break_block():
     pg.click()
 
+
 def place_block():
     pg.keyDown(keymap["jump"])
     pg.keyUp(keymap["jump"])
-    pg.click(button='right')
+    pg.click(button="right")
 
 
 def activate_window(title):
@@ -92,10 +102,13 @@ def activate_window(title):
     screen_width, screen_height = pg.size()
     pg.moveTo(screen_width // 2, screen_height // 2)
 
+
 def quit_command(title):
-    quit=pw.getWindowsWithTitle(title)
+    quit = pw.getWindowsWithTitle(title)
     if quit:
         quit[0].close()
+
+
 if __name__ == "__main__":
     # Speech Recognition
     s = sr.Recognizer()
@@ -117,7 +130,7 @@ if __name__ == "__main__":
                 start = time.time()
                 word = s.recognize_azure(
                     audio,
-                    key='API-KEY',
+                    key=os.environ.get("API_KEY"),
                     language="en-IN",
                     location="centralindia",
                 )[0].lower()
@@ -139,9 +152,9 @@ if __name__ == "__main__":
                 if "fly" in word:
                     for i in range(2):
                         jump()
-                if "creative" in word or "immortal"  in word:
+                if "creative" in word or "immortal" in word:
                     creative()
-                if "survival"  in word or "normal" in word:
+                if "survival" in word or "normal" in word:
                     survival()
                 if "back" in word:
                     look_back()
@@ -159,11 +172,11 @@ if __name__ == "__main__":
                     quit_command(game)
                     print("See you next time !")
                     break
-                if "attack" in word or "break" in word : 
+                if "attack" in word or "break" in word:
                     break_block()
                 if "place block" in word or "place" in word:
                     place_block()
-                if word.isdigit() and 1<=int(word)<=9 :
+                if word.isdigit() and 1 <= int(word) <= 9:
                     print("went here")
                     pg.keyDown(keymap[(str(word))])
             except sr.WaitTimeoutError:
