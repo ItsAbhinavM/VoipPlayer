@@ -40,21 +40,13 @@ def stop():
         pg.keyUp(key)
 
 
-def mouse_left():
-    pg.moveRel(-X_OFFSET, yOffset=0, duration=0.25)
-
-
-def mouse_right():
-    pg.moveRel(X_OFFSET, yOffset=0, duration=0.25)
-
-
-def move_right():
+def right():
     for i in range(2):
         pg.moveRel(X_OFFSET, yOffset=0, duration=0.25)
     pg.keyDown(keymap["forward"])
 
 
-def move_left():
+def left():
     for i in range(2):
         pg.moveRel(-X_OFFSET, yOffset=0, duration=0.25)
     pg.keyDown(keymap["forward"])
@@ -140,9 +132,9 @@ if __name__ == "__main__":
                 print(f"{word} took {analysis_duration} seconds")
 
                 if "left" in word:
-                    mouse_left()
+                    left()
                 if "right" in word:
-                    mouse_right()
+                    right()
                 if "forward" in word or "straight" in word:
                     forward()
                 if "stop" in word:
@@ -162,10 +154,6 @@ if __name__ == "__main__":
                     day()
                 if "night" in word:
                     night()
-                if "go right" in word or "move right" in word:
-                    move_right()
-                if "go left" in word or "move left" in word:
-                    move_left()
                 if "quit" in word:
                     print("Closing game")
                     time.sleep(1)
