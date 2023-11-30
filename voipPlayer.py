@@ -39,6 +39,7 @@ def jump():
 def stop():
     for key in keymap.values():
         pg.keyUp(key)
+    pg.mouseUp()
 
 
 def right():
@@ -78,8 +79,12 @@ def night():
     pg.press("enter")
 
 
-def break_block():
+def attack():
     pg.click()
+
+
+def break_block():
+    pg.mouseDown()
 
 
 def place_block():
@@ -207,8 +212,10 @@ def night():
     pg.write("/time set night", interval=0.01)
     pg.press("enter")
 
+
 def attack():
     pg.click()
+
 
 def break_block():
     pg.h
