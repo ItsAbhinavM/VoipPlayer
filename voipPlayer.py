@@ -43,13 +43,13 @@ def stop():
 
 
 def right():
-    for i in range(2):
+    for _ in range(2):
         pg.moveRel(X_OFFSET, yOffset=0, duration=0.25)
     pg.keyDown(keymap["forward"])
 
 
 def left():
-    for i in range(2):
+    for _ in range(2):
         pg.moveRel(-X_OFFSET, yOffset=0, duration=0.25)
     pg.keyDown(keymap["forward"])
 
@@ -65,7 +65,7 @@ def survival():
 
 
 def look_back():
-    for i in range(4):
+    for _ in range(4):
         pg.moveRel(X_OFFSET, yOffset=0, duration=0.25)
 
 
@@ -177,13 +177,13 @@ def stop():
 
 
 def right():
-    for i in range(2):
+    for _ in range(2):
         pg.moveRel(X_OFFSET, yOffset=0, duration=0.25)
     pg.keyDown(keymap["forward"])
 
 
 def left():
-    for i in range(2):
+    for _ in range(2):
         pg.moveRel(-X_OFFSET, yOffset=0, duration=0.25)
     pg.keyDown(keymap["forward"])
 
@@ -199,7 +199,7 @@ def survival():
 
 
 def look_back():
-    for i in range(4):
+    for _ in range(4):
         pg.moveRel(X_OFFSET, yOffset=0, duration=0.25)
 
 
@@ -295,7 +295,9 @@ def analyse(evt):
         time.sleep(1)
         quit_command(game)
         print("See you next time !")
-    if "attack" in word or "break" in word:
+    if "attack" in word:
+        attack()
+    if "break" in word:
         break_block()
     if "place block" in word or "place" in word:
         place_block()
