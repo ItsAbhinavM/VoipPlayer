@@ -182,6 +182,6 @@ def analyse(evt):
 
 if __name__ == "__main__":
     print("WELCOME PLAYER")
-    game = input()
     print("Type your game here to play:", game)
+    game = input()
     start_speech_engine()
