@@ -1,3 +1,3 @@
 # VoipPlayer
 
-In this repository we are making a Voice-Assisted Gameplay in which we are using SpeechRecognition module of python to access the voice input from the user and will use that input to move the character of the Game .
+A python script which uses Azure's speech API to do voice recognition and control the player in a video game.
